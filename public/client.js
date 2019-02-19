@@ -1,6 +1,20 @@
 let OUTS = 0;
 let baseHit = false;
 
+$('.pitch').on('click', function(e) {
+    pitcher();
+});
+
+$('.reset-inning').on('click', function(e) {
+    console.log("Resetting Outs to Zero")
+    OUTS = 0;
+});
+
+$('.dice-roll').on('click', function(e) {
+    let roll = diceRoll();
+    alert(`You rolled a ${roll}.`);
+})
+
 function pitcher() {
     let strikes = 0;
     let balls = 0;
@@ -36,23 +50,12 @@ function pitcher() {
     } else {
         console.log("Balls: ", balls + " Strikes: ", strikes);
         umpire(balls, strikes);
-        pitcher();
     }
 }
 
 function diceRoll() {
-    let count = 0;
     let roll = 0
-    // added a count as it seems 6 is rolled too frequently.  This makes count 6 have to be rolled twice before counting as a true roll.
-    while (count != 2) {
-        roll = Math.floor(Math.random() * 6) + 1;
-        if (roll === 6) {
-            count++;
-            console.log("Count: ", count);
-        } else {
-            return roll;
-        }
-    }
+    roll = Math.floor(Math.random() * 6) + 1;
 
     return roll;
 }
@@ -69,12 +72,12 @@ function umpire(balls, strikes) {
 }
 
 function hit() {
-    console.log("Run the bases!");
     let count = 0;
-    for (let i = 0; i <= 5; i++){
-        count += diceRoll()
+    let dice = diceRoll();
+    console.log("Roll Die to determine strength of hit");
+    console.log(`Nice Hit!  Roll ${dice} dice`);
+    for (let i = 1; i <= dice ; i++){
+        count += diceRoll();
     }
     console.log("You rolled: ", count);
 }
-
-pitcher();
