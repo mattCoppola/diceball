@@ -1,0 +1,8 @@
+As a user, I want to visit the site and create a username/password
+As a user, I want to visit the site and login using my username/password
+As a user, I want to click a button, so that I can start a new game
+As a user, I want to fill out a form, so that I can pick a home and away team for the new game
+As a user playing a game, I want to click a button to pitch the baseball
+As a user playing a game, I want to click a button to decide the strength of my hit
+As a user playing a game, I want to be able to play both offense and defense after a hit
+As a user playing a game, I want to see a scorecard, so I know the inning and current score of the game
