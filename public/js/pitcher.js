@@ -47,6 +47,8 @@ export function pitch(OUTS, baseHit, inning) {
     return {
         outs: OUTS,
         baseHit: baseHit,
-        inning: inning
+        inning: inning,
+        balls: balls,
+        strikes: strikes
     }
 }
