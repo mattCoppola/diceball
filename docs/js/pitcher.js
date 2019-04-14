@@ -13,7 +13,7 @@ export function pitch(OUTS, baseHit, inning) {
     while (strikes != 3 && balls != 4) {
         if (OUTS === 3) {break;}
         pitch = randomDiceRoll();
-        pitchCount(balls, strikes, OUTS);
+        pitchCount(balls, strikes, OUTS, inning);
         // console.log(`Balls: ${balls}, Strikes: ${strikes}`);
         console.log(`Current Pitch: ${pitch}`);
         if (pitch === 6) {
@@ -42,10 +42,10 @@ export function pitch(OUTS, baseHit, inning) {
         // hit();
     } else if (OUTS === 3) {
         console.log("Inning Over");
-        inning++;
+        inning+= .5;
         OUTS = 0;
     } else {
-        pitchCount(balls, strikes, OUTS);
+        pitchCount(balls, strikes, OUTS, inning);
         // console.log("Balls: ", balls + " Strikes: ", strikes);
         let results = umpire(balls, strikes, OUTS);
         OUTS = results;

@@ -7,7 +7,7 @@ import { runner } from './js/runner.js'
 import { fielder } from './js/fielder.js'
 
 let STATS = {
-    inning: 1,
+    inning: .5,
     outs: 0,
     baseHit: false
 }
@@ -90,7 +90,7 @@ $('.add-inning').on('click', function(e) {
 
 //subtracts an Inning to the game
 $('.subtract-inning').on('click', function(e) {
-  if(STATS.inning === 1) {
+  if(STATS.inning === .5) {
     console.log("Error: Innings can't be less than 1");
   }
   else {

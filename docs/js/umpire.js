@@ -15,12 +15,16 @@ export function umpire(balls, strikes, OUTS) {
 }
 
 // umpire provides pitch count
-export function pitchCount(balls, strikes, OUTS) {
+export function pitchCount(balls, strikes, OUTS, inning) {
     let html = '';
     html += `<li>Balls: ${balls}</li>`;
     html += `<li>Strikes: ${strikes}</li>`;
     html += `<li>Outs: ${OUTS}</li>`;
-
+    if(!Number.isInteger(inning)) {
+        html += `<li>Top of inning ${inning + .5}</li>`;
+    } else {
+        html += `<li>Bottom of inning ${inning}</li>`;
+    }
     $('.pitch-count').html(html);
 }
 
@@ -42,12 +46,12 @@ export function subtractOut(OUTS) {
 
 export function addInning(inning) {
   console.log("adding inning");
-  inning++;
+  inning+= .5;
   return inning;
 }
 
 export function subtractInning(inning){
   console.log("subtracting inning");
-  inning--;
+  inning-= .5;
   return inning;
 }
