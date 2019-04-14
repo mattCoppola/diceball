@@ -16,7 +16,7 @@ let STATS = {
 $('.pitch').on('click', function(e) {
     if (STATS.inning > 9) {
         console.log("Game is Over!!!!!!!");
-        gameStats();
+        // gameStats();
     } else {
         let result = pitch(
             STATS.outs,
@@ -105,7 +105,7 @@ $('.subtract-inning').on('click', function(e) {
 $('.reset-inning').on('click', function(e) {
     console.log("Resetting Outs to Zero")
     STATS.outs = 0;
-    gameStats();
+    // gameStats();
 });
 
 ///////////////////////
@@ -131,10 +131,10 @@ $('.dice-roll').on('click', function(e) {
 })
 
 // displays current game stats
-function gameStats() {
-    let html = '';
-    html += `<li>Inning: ${STATS.inning}</li>`;
-    html += `<li>Outs:  ${STATS.outs}</li>`;
-
-    $('.stats').html(html);
-}
+// function gameStats() {
+//     let html = '';
+//     html += `<li>Inning: ${STATS.inning}</li>`;
+//     html += `<li>Outs:  ${STATS.outs}</li>`;
+//
+//     $('.stats').html(html);
+// }

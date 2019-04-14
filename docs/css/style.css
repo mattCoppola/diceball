@@ -10,7 +10,7 @@
 
 html,
 body {
-    background-color: #fff;
+    background-color: #dbe1f0;
     color: #555;
     font-family: 'Lato', 'Arial', sans-serif;
     font-weight: 300;
@@ -49,6 +49,13 @@ section {
 
 button {
   margin: 10px 0px 0px 10px;
+  style: none;
+  font-size: 80%;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #5b7abe;
+  border: none;
 }
 
 ul {
