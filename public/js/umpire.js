@@ -14,6 +14,16 @@ export function umpire(balls, strikes, OUTS) {
     return OUTS;
 }
 
+// umpire provides pitch count
+export function pitchCount(balls, strikes, OUTS) {
+    let html = '';
+    html += `<li>Balls: ${balls}</li>`;
+    html += `<li>Strikes: ${strikes}</li>`;
+    html += `<li>Outs: ${OUTS}</li>`;
+
+    $('.pitch-count').html(html);
+}
+
 export function addOut(OUTS) {
   console.log("out added");
   OUTS++;

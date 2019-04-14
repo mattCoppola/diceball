@@ -1,5 +1,5 @@
 import { randomDiceRoll } from './randomDiceRoll.js'
-import { umpire } from './umpire.js'
+import { umpire, pitchCount } from './umpire.js'
 import { hit } from './hitter.js'
 
 // pitcher function, keeps track of strikes and balls
@@ -13,7 +13,9 @@ export function pitch(OUTS, baseHit, inning) {
     while (strikes != 3 && balls != 4) {
         if (OUTS === 3) {break;}
         pitch = randomDiceRoll();
-        console.log(pitch);
+        pitchCount(balls, strikes, OUTS);
+        // console.log(`Balls: ${balls}, Strikes: ${strikes}`);
+        console.log(`Current Pitch: ${pitch}`);
         if (pitch === 6) {
             console.log("It's a hit!");
             baseHit = true;
@@ -33,15 +35,20 @@ export function pitch(OUTS, baseHit, inning) {
     }
 
     if (baseHit === true) {
+        console.log("Offense rolls for base runner.");
+        let results = umpire(balls, strikes, OUTS);
+        OUTS = results;
         baseHit = false;
-        hit();
+        // hit();
     } else if (OUTS === 3) {
         console.log("Inning Over");
         inning++;
         OUTS = 0;
     } else {
-        console.log("Balls: ", balls + " Strikes: ", strikes);
-        OUTS = umpire(balls, strikes, OUTS);
+        pitchCount(balls, strikes, OUTS);
+        // console.log("Balls: ", balls + " Strikes: ", strikes);
+        let results = umpire(balls, strikes, OUTS);
+        OUTS = results;
     }
 
     return {

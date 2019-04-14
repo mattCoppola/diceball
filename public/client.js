@@ -1,5 +1,6 @@
 import { randomDiceRoll } from './js/randomDiceRoll.js'
 import { umpire, addOut, subtractOut, addInning, subtractInning } from './js/umpire.js'
+import { baseSteal, pickOff, hitAndRun } from './js/manager.js'
 import { pitch } from './js/pitcher.js'
 import { hit } from './js/hitter.js'
 import { runner } from './js/runner.js'
@@ -9,11 +10,6 @@ let STATS = {
     inning: 1,
     outs: 0,
     baseHit: false
-}
-
-let PITCHCOUNT = {
-    balls: 0,
-    strikes: 0
 }
 
 // runs pitcher function
@@ -27,16 +23,16 @@ $('.pitch').on('click', function(e) {
             STATS.baseHit,
             STATS.inning
         );
-
-        console.log(result);
+        //
+        // console.log(result);
         STATS.outs = result.outs;
         STATS.baseHit = result.baseHit;
         STATS.inning = result.inning;
-        PITCHCOUNT.balls = result.balls;
-        PITCHCOUNT.strikes = result.strikes;
-
-        gameStats();
-        pitchCount();
+        // PITCHCOUNT.balls = result.balls;
+        // PITCHCOUNT.strikes = result.strikes;
+        //
+        // gameStats();
+        // pitchCount();
     }
 });
 
@@ -112,6 +108,22 @@ $('.reset-inning').on('click', function(e) {
     gameStats();
 });
 
+///////////////////////
+// MANAGER FUNCTIONS //
+///////////////////////
+
+$('.base-steal').on('click', function(e) {
+  baseSteal();
+});
+
+$('.pick-off').on('click', function(e) {
+  pickOff();
+});
+
+$('.hit-and-run').on('click', function(e) {
+  hitAndRun();
+});
+
 // dice roll alert - you can probably remove this at some point
 $('.dice-roll').on('click', function(e) {
     let roll = randomDiceRoll();
@@ -125,13 +137,4 @@ function gameStats() {
     html += `<li>Outs:  ${STATS.outs}</li>`;
 
     $('.stats').html(html);
-}
-
-// displays current pitch count
-function pitchCount() {
-    let html = '';
-    html += `<li>Balls: ${PITCHCOUNT.balls}</li>`;
-    html += `<li>Strikes: ${PITCHCOUNT.strikes}</li>`;
-
-    $('.pitch-count').html(html);
 }
