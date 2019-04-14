@@ -84,9 +84,25 @@ $('.subtract-out').on('click', function(e) {
 });
 
 //adds an Inning to the game
+$('.add-inning').on('click', function(e) {
+  // eventually you will want to add logic for extra innings
+  // for now adding an inning will go infinitely
+  let results = addInning(STATS.inning);
+  STATS.inning = results
+  console.log(STATS.inning);
+});
 
 //subtracts an Inning to the game
-
+$('.subtract-inning').on('click', function(e) {
+  if(STATS.inning === 1) {
+    console.log("Error: Innings can't be less than 1");
+  }
+  else {
+    let results = subtractInning(STATS.inning);
+    STATS.inning = results;
+    console.log(STATS.inning);
+  }
+});
 
 
 // resets inning after 3 outs

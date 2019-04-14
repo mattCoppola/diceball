@@ -30,10 +30,14 @@ export function subtractOut(OUTS) {
   };
 }
 
-export function addInning() {
-
+export function addInning(inning) {
+  console.log("adding inning");
+  inning++;
+  return inning;
 }
 
-export function subtractInning(){
-
+export function subtractInning(inning){
+  console.log("subtracting inning");
+  inning--;
+  return inning;
 }
