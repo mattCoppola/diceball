@@ -1,7 +1,9 @@
 import { randomDiceRoll } from './js/randomDiceRoll.js'
-import { umpire } from './js/umpire.js'
+import { umpire, addOut, subtractOut, addInning, subtractInning } from './js/umpire.js'
 import { pitch } from './js/pitcher.js'
 import { hit } from './js/hitter.js'
+import { runner } from './js/runner.js'
+import { fielder } from './js/fielder.js'
 
 let STATS = {
     inning: 1,
@@ -38,11 +40,54 @@ $('.pitch').on('click', function(e) {
     }
 });
 
-//runs hitter function
+//executes hitter function
 $('.hit').on('click', function(e) {
   console.log("Batter swings!");
   hit();
-})
+});
+
+//executes runner function
+$('.runner').on('click', function(e) {
+  runner();
+});
+
+//executes fielder function
+$('.fielder').on('click', function(e) {
+  fielder();
+});
+
+
+//////////////////////
+// UMPIRE FUNCTIONS //
+//////////////////////
+
+//adds an Out to the inning
+$('.add-out').on('click', function(e) {
+  if(STATS.outs >= 3) {
+    console.log("Error:  outs = 3.  Outs can't be greater than 3.")
+  } else {
+    let results = addOut(STATS.outs);
+    STATS.outs = results.outs;
+    console.log(STATS.outs);
+  };
+});
+
+//subtracts an Out from the inning
+$('.subtract-out').on('click', function(e) {
+  if(STATS.outs === 0) {
+    console.log("Error: outs = 0.  Outs can't be negative.");
+  } else {
+    let results = subtractOut(STATS.outs);
+    STATS.outs = results.outs;
+    console.log(STATS.outs);
+  };
+});
+
+//adds an Inning to the game
+
+//subtracts an Inning to the game
+
+
 
 // resets inning after 3 outs
 $('.reset-inning').on('click', function(e) {

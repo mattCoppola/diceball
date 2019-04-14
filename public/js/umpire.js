@@ -13,3 +13,27 @@ export function umpire(balls, strikes, OUTS) {
 
     return OUTS;
 }
+
+export function addOut(OUTS) {
+  console.log("out added");
+  OUTS++;
+  return {
+    outs: OUTS
+  };
+}
+
+export function subtractOut(OUTS) {
+  console.log("out subtracted");
+  OUTS--;
+  return {
+    outs: OUTS
+  };
+}
+
+export function addInning() {
+
+}
+
+export function subtractInning(){
+
+}
