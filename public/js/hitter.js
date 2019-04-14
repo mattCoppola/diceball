@@ -3,12 +3,13 @@ import { randomDiceRoll } from './randomDiceRoll.js'
 
 // hit function carries out a hit and let's batter know the power of the hit
 export function hit() {
-    let count = 0;
-    let dice = randomDiceRoll();
+    let dice = [];
+    let die = randomDiceRoll();
     console.log("Roll Die to determine strength of hit");
-    console.log(`Nice Hit!  Roll ${dice} dice`);
-    for (let i = 1; i <= dice ; i++){
-        count += randomDiceRoll();
+    console.log(`Nice Hit!  Roll ${die} dice`);
+    for (let i = 1; i <= die ; i++){
+        dice.push(randomDiceRoll());
     }
-    console.log("You rolled: ", count);
+    console.log(dice);
+    console.log("You rolled: ", dice.reduce((a,b) => a + b));
 }

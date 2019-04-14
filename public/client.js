@@ -38,10 +38,17 @@ $('.pitch').on('click', function(e) {
     }
 });
 
+//runs hitter function
+$('.hit').on('click', function(e) {
+  console.log("Batter swings!");
+  hit();
+})
+
 // resets inning after 3 outs
 $('.reset-inning').on('click', function(e) {
     console.log("Resetting Outs to Zero")
     STATS.outs = 0;
+    gameStats();
 });
 
 // dice roll alert - you can probably remove this at some point
@@ -67,4 +74,3 @@ function pitchCount() {
 
     $('.pitch-count').html(html);
 }
-
