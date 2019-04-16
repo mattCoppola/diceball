@@ -80,6 +80,23 @@ app.put('/api/update-results/:id', (req, res) => {
     });
 });
 
+////////////////////////////////
+//Authorized DELETE Endpoints //
+////////////////////////////////
+
+app.delete('/api/delete-results/:id', (req, res) => {
+    console.log('Deleting ID: ', req.params.id);
+
+    Game.findByIdAndRemove(req.params.id)
+        .then(function (result) {
+            return res.status(200).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
 
 ///////////////////
 // GET Endpoints //
